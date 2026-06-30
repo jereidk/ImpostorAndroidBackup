@@ -132,14 +132,18 @@ class MusicBeatSubstate extends FlxSubState
 			final stateName = Type.getClassName(Type.getClass(this)).split('.').pop();
 			scriptName = stateName ?? '???';
 		}
-		
+
+		scriptGroup.scriptShareables.set('parent', this);
+
 		this.scriptName = scriptName;
-		
+
 		final scriptFile = FunkinScript.getPath('scripts/$scriptPrefix/$scriptName');
-		
+
+		if (scriptGroup.exists(scriptFile)) return true;
+
 		if (FunkinAssets.exists(scriptFile))
 		{
-			var _script = FunkinScript.fromFile(scriptFile);
+			var _script = FunkinScript.fromFile(scriptFile, scriptName, scriptGroup.scriptShareables);
 			if (_script.__garbage)
 			{
 				_script = FlxDestroyUtil.destroy(_script);
