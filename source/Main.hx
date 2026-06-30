@@ -90,6 +90,24 @@ class Main extends Sprite
 		#if DISABLE_TRACES
 		haxe.Log.trace = (v:Dynamic, ?infos:haxe.PosInfos) -> {}
 		#end
+
+		#if sys
+		FlxG.stage.window.onClose.add(function() {
+			@:privateAccess MusicBeatState.addPlayTimeDelta();
+			ClientPrefs.flush();
+			Sys.println('saved data');
+			funkin.Mods.writeModList();
+			Sys.println('saved mods');
+
+			#if hxvlc
+			hxvlc.util.Handle.dispose(); // this is jsut from base game ok
+			#end
+
+			Sys.println('GOOD BYE CRUEL WORLD');
+
+			Sys.exit(0);
+		});
+		#end
 	}
 	
 	@:access(flixel.FlxCamera)
