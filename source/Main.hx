@@ -46,6 +46,9 @@ class Main extends Sprite
 	{
 		super();
 
+		funkin.Mods.updateModList();
+		funkin.Mods.loadTopMod();
+
 		#if mobile
 		if (StorageSystem.getPermissions()) return;
 		Sys.setCwd(StorageSystem.getStorageDirectory());
@@ -58,6 +61,11 @@ class Main extends Sprite
 		
 		initHaxeUI();
 		
+		#if (windows && cpp)
+		// cpp.Windows.setDarkMode();
+		cpp.Windows.setDpiAware();
+		#end
+
         #if windows
 		WindowUtil.resetWindow();
         #end
@@ -66,7 +74,12 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		ClientPrefs.tryBindingSave('funkin');
 		
-		addChild(new funkin.backend.FunkinGame(startMeta.width, startMeta.height, Init, startMeta.fps, startMeta.fps, true, startMeta.startFullScreen));
+		final game = new funkin.backend.FunkinGame(startMeta.width, startMeta.height, Init, startMeta.fps, startMeta.fps, true, startMeta.startFullScreen);
+
+		// btw game has to be a variable for this to work ig - Orbyy
+		@:privateAccess
+		game._customSoundTray = funkin.objects.FunkinSoundTray;
+		addChild(game);
 		
 		// prevent accept button when alt+enter is pressed
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) -> {
@@ -84,7 +97,25 @@ class Main extends Sprite
 
 		FlxG.signals.gameResized.add(onResize);
 		#if DISABLE_TRACES
-		haxe.Log.trace = (v:Dynamic, ?infos:haxe.PosInfos) -> {}
+		haxe.Log.trace = (v:Dynamic, ?infos:haxe.PosInfos) -> {};
+		#end
+
+		#if sys
+		FlxG.stage.window.onClose.add(function() {
+			@:privateAccess MusicBeatState.addPlayTimeDelta();
+			ClientPrefs.flush();
+			Sys.println('saved data');
+			funkin.Mods.writeModList();
+			Sys.println('saved mods');
+			
+			#if hxvlc
+			hxvlc.util.Handle.dispose(); // this is jsut from base game ok
+			#end
+			
+			Sys.println('GOOD BYE CRUEL WORLD');
+			
+			Sys.exit(0);
+		});
 		#end
 	}
 	
