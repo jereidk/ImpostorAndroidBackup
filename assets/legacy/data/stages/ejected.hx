@@ -250,6 +250,7 @@ function onUpdate(elapsed)
 			if (middleBuildings[i].y < -11759.9)
 			{
 				middleBuildings[i].y = 3190.5;
+				middleBuildings[i].animation.play(FlxG.random.bool(50) ? '1' : '2');
 			}
 			middleBuildings[i].y = FlxMath.lerp(middleBuildings[i].y, middleBuildings[i].y - 1300, FlxMath.bound(elapsed * ejectedSpeed, 0, 1));
 		}
