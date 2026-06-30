@@ -52,7 +52,7 @@ class HotReloadPlugin extends FlxBasic
 			FlxTransitionableState.skipNextTransIn = FlxTransitionableState.skipNextTransOut = true;
 			FlxG.resetState();
 			
-			funkin.Mods.loadTopMod();
+			funkin.Mods.currentModConfig = funkin.Mods.loadTopModConfig();
 		}
 		if (FlxG.keys.justPressed.F7)
 		{
