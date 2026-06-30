@@ -57,7 +57,8 @@ class PauseSubState extends funkin.backend.MusicBeatSubstate
 		pauseGroup = new FlxSpriteGroup();
 		pauseGroup.cameras = [cam];
 
-		pauseBG = new FlxSprite().makeScaledGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		pauseBG = new flixel.system.FlxBGSprite();
+		pauseBG.color = FlxColor.BLACK;
 		pauseBG.alpha = 0;
 		pauseGroup.add(pauseBG);
 

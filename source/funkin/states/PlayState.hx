@@ -654,14 +654,13 @@ class PlayState extends MusicBeatState
 		practiceMode = ClientPrefs.getGameplaySetting('practice', false);
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
 		
-		camGame = new FlxCameraEx();
-		camHUD = new FlxCameraEx();
-		camOther = new FlxCameraEx();
-		
+		camGame = FlxG.camera;
+		camHUD = new FlxCamera();
+		camOther = new FlxCamera();
+
 		camHUD.bgColor = 0x0;
 		camOther.bgColor = 0x0;
-		
-		FlxG.cameras.reset(camGame);
+
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.add(camOther, false);
 		

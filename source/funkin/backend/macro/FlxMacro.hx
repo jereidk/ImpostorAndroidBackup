@@ -197,6 +197,33 @@ class FlxMacro
 							return __angleMatrix;
 						};
 					}
+					else if (field.name == 'fill')
+					{
+						fun.expr = macro {
+							if (!FlxG.renderBlit)
+							{
+								final bounds = __get__bounds();
+								final targetGraphics:Graphics = (graphics == null) ? canvas.graphics : graphics;
+
+								targetGraphics.overrideBlendMode(null);
+								targetGraphics.beginFill(Color, FxAlpha);
+								targetGraphics.drawRect(bounds.x, bounds.y, Math.ceil(bounds.width), Math.ceil(bounds.height));
+								targetGraphics.endFill();
+							}
+							else
+							{
+								if (BlendAlpha)
+								{
+									_fill.fillRect(_flashRect, Color);
+									buffer.copyPixels(_fill, _flashRect, _flashPoint, null, null, BlendAlpha);
+								}
+								else
+								{
+									buffer.fillRect(_flashRect, Color);
+								}
+							}
+						}
+					}
 			}
 		}
 
