@@ -158,16 +158,7 @@
 	"scale": 0.7,
 	"_editor_isPlayer": true,
 	"flags": {
-		"finaleHealthBarColor": [
-			"0xFF59587A",
-			"0xFFC07EF1",
-			"0xFF282C4F"
-		],
-		"turbulenceOffset": [
-			-70,
-			150
-		]
-	},
-	"pausePortrait": "",
-	"afterimages": true
+		"finaleHealthBarColor": ["0xFF59587A", "0xFFC07EF1", "0xFF282C4F"],
+		"turbulenceOffset": [-70, 150]
+	}
 }

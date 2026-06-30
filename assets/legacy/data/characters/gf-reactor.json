@@ -1,5 +1,4 @@
 {
-	"pausePortrait": "",
 	"animations": [
 		{
 			"offsets": [
@@ -105,6 +104,4 @@
 	"sing_duration": 6,
 	"scale": 1,
 	"_editor_isPlayer": false
-"flags": {},
-"afterimages": true,
 }

@@ -141,7 +141,7 @@
 			"flipX": false
 		},
 		{
-			"loop": true,
+			"loop": false,
 			"flipY": false,
 			"offsets": [
 				0,
@@ -154,7 +154,7 @@
 			"flipX": false
 		},
 		{
-			"loop": true,
+			"loop": false,
 			"flipY": false,
 			"offsets": [
 				0,
@@ -193,6 +193,5 @@
 	"_editor_isPlayer": false,
 	"flags": {
 		"runner": true
-	},
-	"pausePortrait": ""
+	}
 }

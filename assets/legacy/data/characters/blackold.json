@@ -1,5 +1,5 @@
 {
-	"pausePortrait": "black",
+    "pausePortrait": "black",
 	"animations": [
 		{
 			"offsets": [
@@ -74,7 +74,7 @@
 	"image": "characters/story/black/retro",
 	"position": [
 		-340,
-		-30
+		-50
 	],
 	"dance_every": 2,
 	"gameover_intial_sound": null,
@@ -91,8 +91,7 @@
 		140
 	],
 	"gameover_loop_sound": null,
-	"sing_duration": 6,
+	"sing_duration": 4,
 	"scale": 1,
-	"_editor_isPlayer": false,
-	"flags": {}
+	"_editor_isPlayer": false
 }

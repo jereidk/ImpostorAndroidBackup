@@ -52,8 +52,5 @@
 		130
 	],
 	"sing_duration": 6,
-	"scale": 0.6,
-	"pausePortrait": "",
-	"flags": {},
-	"afterimages": true
+	"scale": 0.6
 }

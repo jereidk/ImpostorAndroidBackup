@@ -177,7 +177,5 @@
 	"_editor_isPlayer": false,
 	"flags": {
 		"dangerSkateboard": true
-	},
-	"pausePortrait": "",
-	"afterimages": true
+	}
 }
