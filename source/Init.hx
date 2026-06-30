@@ -178,6 +178,8 @@ class Init extends FlxState
 		FlxG.autoPause = ClientPrefs.autoPause;
 		
 		// ready backends
+		funkin.data.Lang.reloadLangFile();
+
 		funkin.backend.plugins.HotReloadPlugin.init();
 		
 		funkin.backend.plugins.DebugTextPlugin.init();

@@ -23,7 +23,13 @@ class FlxUIInputTextEx extends FlxUIInputText
 	public static inline var COPY_EVENT:String = "copy_input_text"; // copy text in this text field
 	public static inline var PASTE_EVENT:String = "paste_input_text"; // paste text in this text field
 	public static inline var CUT_EVENT:String = "cut_input_text"; // cut text in this text field
-	
+
+	public function new(x:Float = 0, y:Float = 0, width:Int = 150, ?text:String, size:Int = 8, textColour:Int = FlxColor.BLACK, bgColour:Int = FlxColor.WHITE)
+	{
+		super(x, y, width, text, size, textColour, bgColour);
+		fieldHeight = size * 1.75;
+	}
+
 	override function onChange(action:String):Void
 	{
 		super.onChange(action);
