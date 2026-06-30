@@ -64,9 +64,15 @@ class Main extends Sprite
 		// load save data before creating FlxGame
 		ClientPrefs.loadDefaultKeys();
 		ClientPrefs.tryBindingSave('funkin');
-		
+
 		addChild(new funkin.backend.FunkinGame(startMeta.width, startMeta.height, Init, startMeta.fps, startMeta.fps, true, startMeta.startFullScreen));
-		
+
+		// apply VSync setting from ClientPrefs
+		if (FlxG.stage != null && FlxG.stage.application != null && FlxG.stage.application.window != null)
+		{
+			FlxG.stage.application.window.vsync = ClientPrefs.vSyncEnabled;
+		}
+
 		// prevent accept button when alt+enter is pressed
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) -> {
 			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();

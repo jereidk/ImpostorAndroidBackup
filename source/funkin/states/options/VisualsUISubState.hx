@@ -53,7 +53,16 @@ class VisualsUISubState extends BaseOptionsMenu
 		
 		var option:Option = new Option('Camera Note Follow', "If unchecked, hitting notes will no longer have the camera follow in its direction.", 'camFollowsCharacters', BOOL, true);
 		addOption(option);
-		
+
+		var option:Option = new Option('Photosensitivity Mode', "Enables photosensitivity protections and reduces visual effects that may trigger discomfort.", 'photosensitivityMode', BOOL, false);
+		addOption(option);
+
+		var option:Option = new Option('Reduce Flashing', "If checked, reduces intense flashing effects and bright strobing lights.", 'reduceFlashing', BOOL, false);
+		addOption(option);
+
+		var option:Option = new Option('Reduce Camera Zooms', "If checked, reduces rapid camera zoom movements on beat hits.", 'reduceCamZooms', BOOL, false);
+		addOption(option);
+
 		super();
 	}
 }

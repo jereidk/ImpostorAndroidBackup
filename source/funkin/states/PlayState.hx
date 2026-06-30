@@ -2214,7 +2214,7 @@ class PlayState extends MusicBeatState
 				if (Math.isNaN(value) || value < 1) value = 1;
 				gfSpeed = value;
 			case 'Add Camera Zoom':
-				if (ClientPrefs.camZooms && FlxG.camera.zoom < 1.35)
+				if (ClientPrefs.camZooms && !ClientPrefs.reduceCamZooms && FlxG.camera.zoom < 1.35)
 				{
 					var camZoom:Float = Std.parseFloat(value1);
 					var hudZoom:Float = Std.parseFloat(value2);
@@ -2998,7 +2998,7 @@ class PlayState extends MusicBeatState
 		
 		if (beatsPerZoom == 0) beatsPerZoom = 4;
 		
-		if (camZooming && ClientPrefs.camZooms && curBeat % beatsPerZoom == 0)
+		if (camZooming && ClientPrefs.camZooms && !ClientPrefs.reduceCamZooms && curBeat % beatsPerZoom == 0)
 		{
 			FlxG.camera.zoom += 0.015 * camZoomingMult;
 			camHUD.zoom += 0.03 * camZoomingMult;

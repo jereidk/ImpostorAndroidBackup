@@ -54,7 +54,9 @@ class ClientPrefs
 	@saveVar public static var unlockedFramerate:Bool = false;
 	
 	@saveVar public static var framerate:Int = 60;
-	
+
+	@saveVar public static var vSyncEnabled:Bool = false;
+
 	// visuals ------------------------------------------------------------------------//
 	@saveVar public static var jumpGhosts:Bool = false;
 	
@@ -81,7 +83,13 @@ class ClientPrefs
 	@saveVar public static var underlayType:String = 'Lane Underlay';
 	
 	@saveVar public static var underlayOpacity:Float = 0.0;
-	
+
+	@saveVar public static var photosensitivityMode:Bool = false;
+
+	@saveVar public static var reduceFlashing:Bool = false;
+
+	@saveVar public static var reduceCamZooms:Bool = false;
+
 	// gameplay ------------------------------------------------------------------------//
 	@saveVar public static var mechanics:Bool = true;
 	

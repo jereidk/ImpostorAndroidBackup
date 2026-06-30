@@ -49,9 +49,14 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		
 		var option:Option = new Option('Unlocked Framerate', "Pretty self explanatory, isn't it?", 'unlockedFramerate', 'bool', false);
 		addOption(option);
-		
+
 		option.onChange = onChangeFramerate;
-		
+
+		var option:Option = new Option('VSync', 'If checked, VSync will be enabled to reduce screen tearing.', 'vSyncEnabled', BOOL, false);
+		addOption(option);
+
+		option.onChange = onChangeVSync;
+
 		super();
 	}
 	
@@ -71,5 +76,10 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 	function onChangeFramerate()
 	{
 		ClientPrefs.changeFps(ClientPrefs.framerate);
+	}
+
+	function onChangeVSync()
+	{
+		lime.app.Application.current.window.vsync = ClientPrefs.vSyncEnabled;
 	}
 }
