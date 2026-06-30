@@ -1,58 +1,58 @@
 {
-	"pausePortrait": "",
 	"animations": [
 		{
-			"offsets": [
-				83,
-				648
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				25,
+				-69
+			],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [
-				104,
-				673
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				-162,
+				-15
+			],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-16,
-				671
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				-292,
+				-76
+			],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [
-				212,
-				634
-			],
-			"loop": false,
 			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				61,
+				28
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
 			"offsets": [
 				156,
 				658
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "fall",
+			"fps": 24,
+			"name": "fall",
 			"indices": [
 				0,
 				1,
@@ -83,32 +83,30 @@
 				26,
 				27,
 				28
-			],
-			"name": "fall"
+			]
 		},
 		{
-			"offsets": [
-				62,
-				641
-			],
-			"flipY": false,
 			"loop": true,
-			"fps": 24,
+			"flipY": false,
+			"offsets": [
+				42,
+				34
+			],
 			"anim": "idle",
-			"flipX": false,
+			"fps": 24,
+			"name": "idle",
 			"indices": [],
-			"name": "idle"
+			"flipX": false
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/story/black/blackdk",
 	"position": [
-		-270,
-		580
+		-410,
+		-29
 	],
 	"dance_every": 2,
 	"gameover_intial_sound": null,
-	"flags": {},
 	"scalableOffsets": false,
 	"gameover_confirm_sound": null,
 	"healthicon": "black",
@@ -122,7 +120,9 @@
 		110
 	],
 	"gameover_loop_sound": null,
-	"sing_duration": 6,
+	"sing_duration": 4,
 	"scale": 1,
-	"_editor_isPlayer": false
+	"_editor_isPlayer": false,
+	"pausePortrait": "",
+	"flags": {}
 }

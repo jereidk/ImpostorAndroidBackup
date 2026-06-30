@@ -1,9 +1,8 @@
 {
-	"pausePortrait": "",
 	"animations": [
 		{
 			"offsets": [
-				102,
+				1502,
 				83
 			],
 			"loop": false,
@@ -14,7 +13,7 @@
 		},
 		{
 			"offsets": [
-				106,
+				1516,
 				84
 			],
 			"loop": false,
@@ -25,7 +24,7 @@
 		},
 		{
 			"offsets": [
-				105,
+				1515,
 				88
 			],
 			"loop": false,
@@ -36,7 +35,7 @@
 		},
 		{
 			"offsets": [
-				102,
+				1512,
 				84
 			],
 			"loop": false,
@@ -49,7 +48,7 @@
 			"loop": false,
 			"flipY": false,
 			"offsets": [
-				104,
+				1514,
 				115
 			],
 			"anim": "idle",
@@ -61,8 +60,9 @@
 	],
 	"no_antialiasing": false,
 	"image": "characters/triple/greythreat",
+	"pausePortrait": "",
 	"position": [
-		0,
+		1410,
 		220
 	],
 	"dance_every": 2,

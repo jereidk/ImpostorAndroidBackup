@@ -12,7 +12,7 @@
 			"indices": []
 		},
 		{
-			"loop": true,
+			"loop": false,
 			"offsets": [
 				16,
 				0
@@ -21,9 +21,9 @@
 			"fps": 24,
 			"name": "animations/hey",
 			"indices": [
-				4,
-				5,
-				6
+				11,
+				12,
+				13
 			]
 		},
 		{
@@ -220,7 +220,10 @@
 		0
 	],
 	"gameover_loop_sound": null,
-	"sing_duration": 6,
+	"sing_duration": 4,
 	"scale": 1,
-	"_editor_isPlayer": true
+	"_editor_isPlayer": true,
+	"pausePortrait": "",
+	"flags": {},
+	"afterimages": true
 }

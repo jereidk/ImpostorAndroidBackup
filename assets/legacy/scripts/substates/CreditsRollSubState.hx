@@ -227,7 +227,7 @@ function onLoad():Void
 {
 	// This will probably be reworked to have custom modded credits in the future.
 	// Nigga typing like serious Samuel im crying. But yea
-	if (Paths.fileExists('securitydlc/meta.json', NORMAL))
+	if (Paths.fileExists('securitydlc/meta.json', null, true))
 	{
 		hasDLC = true;
 		
@@ -510,7 +510,7 @@ function victory():Void
 	add(victory);
 
 	var thanks:FlxText = new FlxText(0, 600, 900, 'Thank you for playing!');
-	thanks.setFormat(Paths.font('vcr.ttf'), 56, 0xff80ffff, 'center');
+	thanks.setFormat(Paths.font('vcr.ttf'), 66, 0xff80ffff, 'center');
 	insert(0, thanks);
 	thanks.text = Lang.str('credits_thanks');
 	thanks.screenCenter(FlxAxes.X);
@@ -542,7 +542,7 @@ function loadCredits():Void
 		
 		if (credit.image != null)
 		{
-			var image:FlxSprite = creditCluster.add(new FlxSprite(0, 0, Paths.image(credit.image, null, null, PathsTestMode.LOOSE)));
+			var image:FlxSprite = creditCluster.add(new FlxSprite(0, 0, Paths.image(credit.image)));
 			
 			image.scale.set(credit.scale ?? 1, credit.scale ?? 1);
 			image.updateHitbox();
@@ -574,8 +574,8 @@ function loadCredits():Void
 			var iconPath:String = 'credits/icons/' + credit.icon;
 			if (isFlagIcon) iconPath = 'credits/icons/flags/' + credit.icon.substr(6);
 			
-			final iconExists:Bool = Paths.fileExists('images/$iconPath.png', null, PathsTestMode.LOOSE);
-			var icon:FlxSprite = new FlxSprite(0, 0, Paths.image(iconExists ? iconPath : 'credits/icons/unknown', null, null, PathsTestMode.LOOSE));
+			final iconExists:Bool = Paths.fileExists('images/' + iconPath + '.png');
+			var icon:FlxSprite = new FlxSprite(0, 0, Paths.image(iconExists ? iconPath : 'credits/icons/unknown'));
 			
 			icon.visible = iconExists;
 			icon.shader = newShader('outline2');

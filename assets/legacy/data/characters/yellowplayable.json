@@ -1,171 +1,150 @@
 {
-	"pausePortrait": "",
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "dmiss",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "dmiss"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "lmiss",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "lmiss"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "umiss",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "umiss"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "rmiss",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "rmiss"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
+			"flipY": false,
+			"loop": false,
+			"fps": 24,
 			"anim": "scared",
-			"fps": 24,
-			"name": "scared",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "scared"
 		},
 		{
-			"loop": false,
-			"flipY": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "hey",
+			"flipY": false,
+			"loop": false,
 			"fps": 24,
-			"name": "hey",
+			"anim": "hey",
+			"flipX": false,
 			"indices": [],
-			"flipX": false
+			"name": "hey"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/bf/cosmicube/yellow-rip",
 	"position": [
 		-130,
-		285
+		295
 	],
 	"dance_every": 2,
 	"gameover_intial_sound": null,
-	"flags": {
-		"i mean": "it isnt really a ghost but like like yeah",
-		"variants": {
-			"customMonotone": "yellow",
-			"stabbed": "yellowplayablestabbed",
-			"alive": "yellow-ghost"
-		},
-		"turbulenceOffset": [
-			20,
-			110
-		],
-		"customMonotone": "yellow",
-		"ghost": true,
-		"finaleHealthBarColor": [
-			"0xFFFFD452",
-			"0xFFFFEC8E",
-			"0xFFE0893B"
-		]
-	},
 	"scalableOffsets": false,
 	"gameover_confirm_sound": null,
 	"healthicon": "yellow-dead",
-	"afterimages": true,
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": true,
@@ -175,7 +154,26 @@
 		-81
 	],
 	"gameover_loop_sound": null,
-	"sing_duration": 6,
+	"sing_duration": 4,
 	"scale": 0.8,
-	"_editor_isPlayer": true
+	"_editor_isPlayer": true,
+	"flags": {
+		"variants": {
+			"alive": "yellow-ghost"
+		},
+		"turbulenceOffset": [
+			20,
+			110
+		],
+		"finaleHealthBarColor": [
+			"0xFFFFD452",
+			"0xFFFFEC8E",
+			"0xFFE0893B"
+		],
+		"customMonotone": "yellow",
+		"ghost": true,
+		"i mean": "it isnt really a ghost but like like yeah"
+	},
+	"pausePortrait": "",
+	"afterimages": true
 }

@@ -30,6 +30,9 @@ class PsychHUD extends BaseHUD
 	var _numAlphaTweens:Array<FlxTween> = [];
 	var _numScaleTweens:Array<FlxTween> = [];
 
+	// Dirty-check for timeTxt — only redraw when the displayed second actually changes.
+	var _lastSecond:Int = -1;
+	
 	var ratingPrefix:String = "";
 	var ratingSuffix:String = '';
 	var textDivider = '|';
@@ -61,6 +64,7 @@ class PsychHUD extends BaseHUD
 		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.downScroll ? 0.89 : 0.11), 'healthBar', function() return healthLerp, parent.healthBounds.min, parent.healthBounds.max);
 		healthBar.screenCenter(X);
 		healthBar.leftToRight = false;
+		healthBar.scrollFactor.set();
 		healthBar.visible = !ClientPrefs.hideHud;
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
 		reloadHealthBarColors();
@@ -80,6 +84,7 @@ class PsychHUD extends BaseHUD
 		
 		scoreTxt = new FlxText(0, healthBar.y + 40, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font('vcr.ttf'), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
@@ -87,6 +92,7 @@ class PsychHUD extends BaseHUD
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
 		timeTxt = new FlxText(0, 19, FlxG.width, "", 32);
 		timeTxt.setFormat(Paths.DEFAULT_FONT, 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
 		timeTxt.visible = parent.updateTime = showTime;
@@ -94,6 +100,7 @@ class PsychHUD extends BaseHUD
 		if (ClientPrefs.timeBarType == 'Song Name') timeTxt.text = PlayState.SONG.song.toUpperCase();
 		
 		timeBar = new Bar(0, timeTxt.y + (timeTxt.height / 4), 'timeBar', function() return parent.songPercent, 0, 1);
+		timeBar.scrollFactor.set();
 		timeBar.screenCenter(X);
 		timeBar.alpha = 0;
 		timeBar.visible = showTime;
@@ -252,20 +259,31 @@ class PsychHUD extends BaseHUD
 	
 	override function update(elapsed:Float)
 	{
-		healthLerp = FlxMath.lerp(healthLerp, parent.health, 0.15);
-
+		super.update(elapsed);
+		
 		updateIconsPosition();
 		updateIconsScale(elapsed);
 		updateIconsAnimation();
-
-		final curTime:Float = FlxMath.bound(parent.getSongTime() - ClientPrefs.noteOffset, 0, parent.songLength);
-		parent.songPercent = (curTime / parent.songLength);
-
-		var songCalc:Float = (ClientPrefs.timeBarType == 'Time Left' ? (parent.songLength - curTime) : curTime);
-
-		if (ClientPrefs.timeBarType != 'Song Name') timeTxt.text = FlxStringUtil.formatTime(Math.floor(songCalc / 1000), false);
-
-		super.update(elapsed);
+		
+		if (!parent.startingSong && !parent.paused && parent.updateTime && !parent.endingSong)
+		{
+			var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.noteOffset);
+			parent.songPercent = (curTime / parent.songLength);
+			
+			var songCalc:Float = (parent.songLength - curTime);
+			if (ClientPrefs.timeBarType == 'Time Elapsed') songCalc = curTime;
+			
+			var secondsTotal:Int = Math.floor(songCalc / 1000);
+			if (secondsTotal < 0) secondsTotal = 0;
+			
+			if (ClientPrefs.timeBarType != 'Song Name' && secondsTotal != _lastSecond)
+				{
+					_lastSecond = secondsTotal;
+					timeTxt.text = flixel.util.FlxStringUtil.formatTime(secondsTotal, false);
+				}
+		}
+		
+		healthLerp = FlxMath.lerp(healthLerp, parent.health, 0.15);
 	}
 	
 	override function beatHit()

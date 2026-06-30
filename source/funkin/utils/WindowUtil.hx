@@ -70,12 +70,7 @@ class WindowUtil
 		openfl.system.System.exit(0);
 	}
 
-	public static function resetWindow():Void
-	{
-		#if (windows && cpp)
-		cpp.Windows.setDpiAware();
-		#end
-	}
+	public static function resetWindow():Void {}
 	
 	#if FEATURE_DEBUG_TRACY
 	/**

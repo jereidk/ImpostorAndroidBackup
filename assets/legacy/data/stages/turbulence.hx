@@ -295,9 +295,15 @@ function onUpdatePost(elapsed:Float):Void
 	
 	// props thingy
 	
-	var time:Float = getSongTime();
-	musicDelta = (time - musicTime);
-	musicTime = time;
+	if (endingSong || (!startingSong && !audio.playing))
+	{
+		musicTime += (musicDelta = (elapsed * 1000));
+	}
+	else
+	{
+		musicDelta = (Conductor.songPosition - musicTime);
+		musicTime = Conductor.songPosition;
+	}
 	
 	if (ClientPrefs.flashing)
 	{
@@ -309,8 +315,8 @@ function onUpdatePost(elapsed:Float):Void
 		crazy = 1;
 	}
 	
-	camHUD.scroll.y = Math.sin((musicTime / 1000) * (Conductor.bpm / 60) * -1.0) * 8 * (crazy * .5 + .5);
-	camHUD.scrollAngle = Math.sin((musicTime / 1200) * (Conductor.bpm / 60) * -1.0) * (crazy * .5 + .5);
+	camHUD.y = Math.sin((musicTime / 1000) * (Conductor.bpm / 60) * 1.0) * 8 * (crazy * .5 + .5);
+	camHUD.angle = Math.sin((musicTime / 1200) * (Conductor.bpm / 60) * -1.0) * (crazy * .5 + .5);
 	
 	FlxG.camera.targetOffset.set(Math.sin(musicTime / 412) * 20 * crazy, // magic
 		Math.cos(musicTime / 877) * 20 * crazy);

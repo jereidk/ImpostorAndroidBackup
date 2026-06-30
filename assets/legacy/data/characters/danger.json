@@ -141,7 +141,7 @@
 			"flipX": false
 		},
 		{
-			"loop": false,
+			"loop": true,
 			"flipY": false,
 			"offsets": [
 				0,
@@ -154,7 +154,7 @@
 			"flipX": false
 		},
 		{
-			"loop": false,
+			"loop": true,
 			"flipY": false,
 			"offsets": [
 				0,
@@ -189,9 +189,10 @@
 	],
 	"gameover_loop_sound": null,
 	"sing_duration": 3.4,
-	"scale": 1.1,
+	"scale": 2.2,
 	"_editor_isPlayer": false,
 	"flags": {
 		"runner": true
-	}
+	},
+	"pausePortrait": ""
 }

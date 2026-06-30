@@ -1,60 +1,59 @@
 {
-	"pausePortrait": "",
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-150,
 				89
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-82,
 				-59
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				25,
 				187
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-36,
 				71
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				60
 			],
-			"flipY": false,
-			"loop": false,
-			"fps": 24,
 			"anim": "danceLeft",
-			"flipX": false,
+			"fps": 24,
+			"name": "idle",
 			"indices": [
 				0,
 				1,
@@ -78,18 +77,18 @@
 				13,
 				14
 			],
-			"name": "idle"
+			"flipX": false
 		},
 		{
+			"loop": false,
+			"flipY": false,
 			"offsets": [
 				0,
 				60
 			],
-			"flipY": false,
-			"loop": false,
-			"fps": 24,
 			"anim": "danceRight",
-			"flipX": false,
+			"fps": 24,
+			"name": "idle",
 			"indices": [
 				15,
 				16,
@@ -115,22 +114,23 @@
 				30,
 				31
 			],
-			"name": "idle"
+			"flipX": false
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/triple/grey",
+	"pausePortrait": "",
+	"flags": {},
+	"afterimages": true,
 	"position": [
 		0,
 		220
 	],
 	"dance_every": 2,
 	"gameover_intial_sound": null,
-	"flags": {},
 	"scalableOffsets": false,
 	"gameover_confirm_sound": null,
 	"healthicon": "gray",
-	"afterimages": true,
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": false,

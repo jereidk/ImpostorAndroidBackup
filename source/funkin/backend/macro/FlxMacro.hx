@@ -121,6 +121,24 @@ class FlxMacro
 		return fields;
 	}
 	
+	/**
+	 * Adds zIndex to `FlxBasic`'
+	 */
+	public static macro function buildFlxBasic():Array<Field>
+	{
+		var fields:Array<Field> = Context.getBuildFields();
+		
+		fields.push(
+			{
+				name: "zIndex",
+				access: [APublic],
+				kind: FVar(macro :Int, macro $v{0}),
+				pos: Context.currentPos(),
+			});
+			
+		return fields;
+	}
+	
 	public static macro function buildFlxCamera():Array<Field>
 	{
 		var fields:Array<Field> = Context.getBuildFields();
@@ -173,70 +191,15 @@ class FlxMacro
 					}),
 				pos: Context.currentPos()
 			});
-
-		for (field in fields)
-		{
-			switch (field.kind)
-			{
-				default:
-				case FFun(fun):
-					if (field.name == '__get__rotated__matrix')
-					{
-						// removes the line that translates the sdcroll to the camera poistion grrrrr
-
-						fun.expr = macro {
-							__angleMatrix.identity();
-							__angleMatrix.translate(-width * 0.5, -height * 0.5);
-							if (shakeMatrixFix)
-								__angleMatrix.translate(_fxShakeXOffset, _fxShakeYOffset);
-							__angleMatrix.scale(scaleX, scaleY);
-							if (!(_sinScrollAngle == 0 && _sinScrollAngle == 1))
-								__angleMatrix.rotateWithTrig(_cosScrollAngle, _sinScrollAngle);
-							__angleMatrix.translate(width * 0.5, height * 0.5);
-							__angleMatrix.scale(FlxG.scaleMode.scale.x, FlxG.scaleMode.scale.y);
-							return __angleMatrix;
-						};
-					}
-					else if (field.name == 'fill')
-					{
-						fun.expr = macro {
-							if (!FlxG.renderBlit)
-							{
-								final bounds = __get__bounds();
-								final targetGraphics:Graphics = (graphics == null) ? canvas.graphics : graphics;
-
-								targetGraphics.overrideBlendMode(null);
-								targetGraphics.beginFill(Color, FxAlpha);
-								targetGraphics.drawRect(bounds.x, bounds.y, Math.ceil(bounds.width), Math.ceil(bounds.height));
-								targetGraphics.endFill();
-							}
-							else
-							{
-								if (BlendAlpha)
-								{
-									_fill.fillRect(_flashRect, Color);
-									buffer.copyPixels(_fill, _flashRect, _flashPoint, null, null, BlendAlpha);
-								}
-								else
-								{
-									buffer.fillRect(_flashRect, Color);
-								}
-							}
-						}
-					}
-			}
-		}
-
+			
 		return fields;
 	}
-
-
+	
+	
 	public static macro function buildFlxText():Array<Field>
 	{
 		var fields:Array<Field> = Context.getBuildFields();
 		
-		var toRemove:Array<Field> = [];
-
 		for (field in fields) {
 			switch (field.kind) {
 				default:
@@ -245,20 +208,17 @@ class FlxMacro
 						fun.expr = macro {
 							if (textField == null || textField.text == Text)
 								return text = Text;
-
+							
 							_regen = true;
 							return textField.text = text = Text;
 						}
 					}
 			}
-
-			if (field.name == 'set_antialiasing')
-				toRemove.push(field);
+			
+			if (field.name == 'set_antialiasing') // fucj ou
+				fields.remove(field);
 		}
-
-		for (field in toRemove)
-			fields.remove(field);
-
+		
 		return fields;
 	}
 	
@@ -334,44 +294,6 @@ class FlxMacro
 		return fields;
 	}
 	
-	/**
-	 * Removes mobile-only volume/mute hardlocks from `SoundFrontEnd`.
-	 * Upstream flixel locks volume=1 and muted=false on mobile, breaking in-game audio control.
-	 */
-	public static macro function buildFlxSoundFrontEnd():Array<Field>
-	{
-		var fields:Array<Field> = Context.getBuildFields();
-
-		for (field in fields)
-		{
-			switch (field.kind)
-			{
-				default:
-				case FFun(fun):
-					if (field.name == 'set_volume')
-					{
-						fun.expr = macro
-						{
-							volume = flixel.math.FlxMath.bound(Volume, 0, 1);
-							if (volumeHandler != null)
-								volumeHandler(muted ? 0 : volume);
-							onVolumeChange.dispatch(muted ? 0 : volume);
-							return volume;
-						}
-					}
-					else if (field.name == 'set_muted')
-					{
-						fun.expr = macro
-						{
-							return muted = v;
-						}
-					}
-			}
-		}
-
-		return fields;
-	}
-
 	/**
 	 * A general function for both `FlxDrawQuadsItem` and `FlxDrawTrianglesItem`
 	 * It adjusts the `render` function to update rgb shader fields if it can

@@ -71,7 +71,9 @@ class StrumNote extends RGBSprite implements funkin.game.modchart.IModNote
 		skin = NoteUtil.getSkinFromID(parent?.player ?? 0);
 		
 		texture = skin.noteTexture; // Load texture and anims
-
+		
+		scrollFactor.set();
+		
 		useRGBShader = skin.inEngineColoring;
 		
 		isQuant = parent?.quants ?? ClientPrefs.quants;
@@ -96,7 +98,7 @@ class StrumNote extends RGBSprite implements funkin.game.modchart.IModNote
 		
 		// Defensively clear stale frame cache to prevent Haxe logo on song restart.
 		// The frame cache key is derived from the texture path without .png extension.
-		Paths.tempAtlasFramesCache.remove(Paths.getPath('images/$br.png', NORMAL).withoutExtension());
+		Paths.tempAtlasFramesCache.remove(Paths.getPath('images/$br.png', null, true).withoutExtension());
 		
 		frames = Paths.getAtlasFrames(br);
 		

@@ -27,7 +27,7 @@
 			"loop": false,
 			"offsets": [
 				0,
-				0
+				35
 			],
 			"anim": "deathConfirm",
 			"fps": 24,
@@ -36,28 +36,28 @@
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/gameover/bfdefeatgameovers",
+	"flags": {},
+	"afterimages": true,
+	"image": "characters/gameover/bf_defeat_death",
 	"position": [
-		-945,
-		266
+		-80,
+		316
 	],
 	"dance_every": 2,
 	"gameover_intial_sound": null,
-	"flags": {},
 	"scalableOffsets": false,
 	"gameover_confirm_sound": null,
 	"healthicon": "bf",
-	"afterimages": true,
 	"gameover_character": null,
 	"vslice_sustains": false,
 	"flip_x": true,
 	"healthbar_colour": -13520687,
 	"camera_position": [
-		43,
-		-136
+		-117,
+		78
 	],
 	"gameover_loop_sound": null,
-	"sing_duration": 6,
+	"sing_duration": 4,
 	"scale": 1,
 	"_editor_isPlayer": true
 }

@@ -1,61 +1,110 @@
-# VS IMPOSTOR LEGACY 1.1.1b
+# VS Impostor Legacy — Android Port
 
-![](assets/legacy/images/branding/UpdogBlack.png)
+Unofficial Android port of the **VS Impostor Legacy** mod, built on the [NightmareVision engine](https://github.com/NMVTeam/NightmareVision).
 
-Made with [NightmareVision Engine](https://github.com/NMVTeam/NightmareVision)!
+> APKs are generated automatically via GitHub Actions on every push.
 
-### Read the [VS IMPOSTOR LEGACY changelog](LEGACY.md) here.
+---
 
-# Compiling
+## Credits
+
+**Mod (VS Impostor Legacy)**
+* inky03 / motorfrog — original mod creator
+
+**Android Port**
+* jereidk — port maintainer
+
+**NightmareVision Engine**
+* NMVTeam — engine authors
+* FNF BR (LumiCoder) — original mobile port base
+* StarNovaBR (StarNova) — mobile port contributions
+
+**Engine upstream credits**
+* ShadowMario and Co. — [Psych Engine](https://github.com/ShadowMario/FNF-PsychEngine)
+* Nebula_Zorua — [Psych fork NMV is built off](https://github.com/nebulazorua/exe-psych-fork) and Modchart backend
+* Rozebud — chart editor ([FPS Plus](https://github.com/ThatRozebudDude/FPS-Plus-Public))
+* Codename Engine crew — camera rotation support
+* FunkinCrew — [Lime](https://github.com/FunkinCrew/lime), [OpenFL](https://github.com/FunkinCrew/openfl), [hxcpp](https://github.com/FunkinCrew/hxcpp) forks
+* MaybeMaru — [MoonChart](https://github.com/MaybeMaru/moonchart) and [flixel-animate](https://github.com/MaybeMaru/flixel-animate)
+
+---
+
+## How to compile locally
 
 ### Prerequisites
 
-(You can skip this if you already have compiled any fnf or flixel project)
+**All platforms:**
+* [Haxe 4.3.6+](https://haxe.org/download/) and Haxelib 4.2.0+
+* [Git](https://git-scm.com/downloads)
 
-- [Git](https://git-scm.com/downloads)
-- [Haxe](https://haxe.org/download/)
-	- 4.3.6 or newer is expected!
+**Windows (PC build):**
+* [VS Community Build Tools](https://aka.ms/vs/17/release/vs_BuildTools.exe) — install `Desktop development with C++`
 
-### Additional platform setup
-(excerpts from [Funkin compiling documentation](https://github.com/FunkinCrew/Funkin/blob/main/docs/COMPILING.md))
-- If you're compiling for Windows, download the [Visual Studio Build Tools](https://aka.ms/vs/17/release/vs_BuildTools.exe).
-	- When prompted, select "Individual Components" and make sure to download the following:
-        - MSVC v143 VS 2022 C++ x64/x86 build tools
-        - Windows 10/11 SDK
-- For Mac, read the [macOS setup Lime documentation](https://lime.openfl.org/docs/advanced-setup/macos/).
-- For Linux, read the [Linux setup Lime documentation](https://lime.openfl.org/docs/advanced-setup/linux/) first.
-	- Hxvlc uses libVLC, which requires you to install some development packages to be able to compile.<br>
-	For Ubuntu/Debian based systems, you can execute `sudo apt install libvlc-dev libvlccore-dev libvlccore9`.<br>For other distros, please refer to [Hxvlc's documentation](https://github.com/MAJigsaw77/hxvlc?tab=readme-ov-file#dependencies).
-
-### Installing libraries
-
-> [!TIP]  
-> Actually, you can run [this file](projFiles/SETUP.bat) to handle library setup automatically!
+**Android build:**
+* [Android Studio](https://developer.android.com/studio) — for SDK/NDK setup
 
 > [!NOTE]
-> This engine **enforces** the use of local libraries with hxpkg to prevent issues in relation to Hxvlc.<br>
-> The expected library versions are listed within the .hxpkg file.
->
-> If any compilation errors arise, ensure your Haxe version is correct and your libraries match those expected versions.
+> This project uses **hxpkg** to manage library versions. The expected versions are listed in `.hxpkg`.
 
-Open a Command Prompt within the project directory and run the following commands...
+---
 
-```cmd
-haxelib install hxpkg
-haxelib run hxpkg setup
+### 1. Install libraries
+
+```sh
+haxelib git hxpkg https://github.com/ADA-Funni/hxpkg add-hmm-compatibility
 haxelib run hxpkg install
 ```
 
-You should be able to run `lime test cpp` to start compiling the game now!
+<details>
+<summary>Faster method (requires Rust)</summary>
 
-- You can include `-D ASSET_REDIRECT` in the command for ingame assets to update as they're changed in the `assets` folder.<br>
-	(Do **not** include this command if you're making a release build)
+```sh
+haxelib git hxpkg https://github.com/ADA-Funni/hxpkg add-hmm-compatibility
+haxelib run hxpkg to-hmm
 
-	Otherwise, to compile with the Security DLC, include the command `-D DLC` when building!!
+cargo install --git https://github.com/ninjamuffin99/hmm-rs hmm-rs
+hmm-rs clean
+hmm-rs install
 
-# Special Thanks
+haxelib fixrepo
 
-- ShadowMario and Co. for [Psych Engine](https://github.com/ShadowMario/FNF-PsychEngine)
-- Nebula_Zorua for the [specific Psych fork](https://github.com/nebulazorua/exe-psych-fork) NMV is built off and for the Modchart backend
-- Rozebud for the chart editor little buddies ([Check out FPS Plus too](https://github.com/ThatRozebudDude/FPS-Plus-Public))
-- MaybeMaru for [MoonChart](https://github.com/MaybeMaru/moonchart) and [Flixel-animate](https://github.com/MaybeMaru/flixel-animate)
+haxelib install hmm
+haxelib remove grig.audio
+haxelib run hmm reinstall grig.audio
+
+haxelib fixrepo
+```
+</details>
+
+---
+
+### 2. Compile
+
+#### Windows
+```sh
+haxelib run lime rebuild cpp -release
+haxelib run lime build windows -release
+```
+
+#### Android
+
+First, configure your SDK/NDK paths:
+```sh
+lime setup android
+```
+Provide absolute paths to your Android SDK, NDK, and JDK. Leave Apache Ant blank.
+
+Then go to **Android Studio → SDK Manager → SDK Tools** and install:
+- Android SDK Build-Tools
+- NDK (Side by side) — r21e recommended
+- Android SDK Platform-Tools
+
+Then build:
+```sh
+haxelib run lime build android -release
+```
+
+To install directly on a connected device via USB debugging:
+```sh
+haxelib run lime test android -release
+```

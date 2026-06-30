@@ -5,7 +5,7 @@
             {
                 "name": "flixel",
                 "link": "https://github.com/FunkinCrew/flixel",
-                "branch": "6fb97f4d9498c734b1cd8adbb3305e8bf1c6ad5e"
+                "branch": "622bb65e7f49f0e1a03826b6593369d3ad5e54fa"
             },
             {
                 "name": "flixel-addons",
@@ -51,7 +51,7 @@
             {
                 "name": "openfl",
                 "link": "https://github.com/FunkinCrew/openfl",
-                "branch": "b5565adc75511b3e4c8b384ee25ce7401b11ef32"
+                "branch": "a85b45f21c7e1a4c19663a193bf4ea961faf0dfa"
             },
             {
                 "name": "hxdiscord_rpc",
@@ -65,7 +65,7 @@
             {
                 "name": "haxeui-core",
                 "link": "https://github.com/FunkinCrew/haxeui-core",
-                "branch": "998534fb830450ca1e60c47a9524af5730431145"
+                "branch": "09f2512564b45e92229e21433e6dd482391f7b7d"
             },
             {
                 "name": "moonchart",

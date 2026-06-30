@@ -19,7 +19,8 @@ var bigCloudSpeed:Float = 10;
 
 function onLoad()
 {
-	game.camGame.height += 8;
+	game.camGame.height = FlxG.height + 200;
+	game.camGame.y -= 100;
 	
 	var sky:FlxSprite = new FlxSprite(-1500, -897.55).loadGraphic(Paths.image('stages/airship/danger/sky'));
 	sky.setGraphicSize(5000, sky.height * 1.5 * 4);
@@ -172,9 +173,9 @@ function onUpdate(elapsed) // to anyone else reading this script I'm sorry its j
 	if (!isDead)
 	{
 		if (!blackScream) game.camGame.shake(0.0008, 0.01);
-		game.camGame.y = Math.sin((Conductor.songPosition / 280) * (Conductor.bpm / 60) * 1.0) * 2 - 2;
-		game.camHUD.scroll.y = Math.sin((Conductor.songPosition / 300) * (Conductor.bpm / 60) * -1.0) * 0.6;
-		game.camHUD.scrollAngle = Math.sin((Conductor.songPosition / 350) * (Conductor.bpm / 60) * -1.0) * 0.6;
+		game.camGame.y = Math.sin((Conductor.songPosition / 280) * (Conductor.bpm / 60) * 1.0) * 2 - 100;
+		game.camHUD.y = Math.sin((Conductor.songPosition / 300) * (Conductor.bpm / 60) * 1.0) * 0.6;
+		game.camHUD.angle = Math.sin((Conductor.songPosition / 350) * (Conductor.bpm / 60) * -1.0) * 0.6;
 	}
 	
 	airFarClouds.x -= (delta * 7);

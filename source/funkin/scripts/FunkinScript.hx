@@ -36,7 +36,7 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 		{
 			final file = '$path.$extension';
 			
-			final targetPath = Paths.getPath(file, mode);
+			final targetPath = Paths.getPath(file, null, true, mode);
 			if (FunkinAssets.exists(targetPath)) return targetPath;
 		}
 		return path;
@@ -58,8 +58,7 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 		var prefix = '[$prefix$fileName:$lineNumber]';
 		
 		final modPath:String = Paths.mods(Mods.currentModDirectory + '/');
-		if (fileName.startsWith(modPath)) prefix = prefix.replace(modPath, '');
-		#if ASSET_REDIRECT else if (fileName.startsWith(Paths.trail)) prefix = prefix.replace(Paths.trail, ''); #end
+		if (fileName.contains(modPath)) prefix = prefix.replace(modPath, '');
 		
 		return '$prefix - $x';
 	}
@@ -110,9 +109,9 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 	 * @param name 
 	 * @param additionalVars 
 	 */
-	public static function fromString(script:String, ?name:String = "Script", ?additionalVars:Map<String, Any>, ?shareables:Sharables, ?modFolder:String)
+	public static function fromString(script:String, ?name:String = "Script", ?additionalVars:Map<String, Any>, ?shareables:Sharables)
 	{
-		return new FunkinScript(script, name, additionalVars, shareables, modFolder);
+		return new FunkinScript(script, name, additionalVars, shareables);
 	}
 	
 	/**
@@ -122,30 +121,25 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 	 * @param name 
 	 * @param additionalVars 
 	 */
-	public static function fromFile(file:String, ?name:String, ?additionalVars:Map<String, Any>, ?shareables:Sharables, ?modFolder:String)
+	public static function fromFile(file:String, ?name:String, ?additionalVars:Map<String, Any>, ?shareables:Sharables)
 	{
 		name ??= file;
-
-		modFolder ??= Paths.getModFolder(file, 'scripts');
-
-		return new FunkinScript(FunkinAssets.getContent(file), name, additionalVars, shareables, modFolder);
+		
+		return new FunkinScript(FunkinAssets.getContent(file), name, additionalVars, shareables);
 	}
 	
 	/**
 	 * is true if parsing failed
 	 */
 	@:noCompletion public var __garbage:Bool = false;
-
-	public var modFolder:Null<String>;
-
-	public function new(script:String, ?name:String = "Script", ?additionalVars:Map<String, Any>, ?shareables:Sharables, ?modFolder:String)
+	
+	public function new(script:String, ?name:String = "Script", ?additionalVars:Map<String, Any>, ?shareables:Sharables)
 	{
 		super(script, {name: name, autoRun: false, autoPreset: false}, shareables);
-
+		
 		(cast interp : InterpEx).parent = FlxG.state;
-
-		this.modFolder = modFolder;
-
+		// interp = new InterpEx(FlxG.state);
+		
 		preset();
 		
 		if (additionalVars != null)
@@ -220,7 +214,6 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 	override function preset()
 	{
 		super.preset();
-
 		#if hl
 		set('Math', hl.HLFixes.HLMath);
 		set('Std', hl.HLFixes.HLStd);
@@ -230,18 +223,15 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 			Iris.print(formatPosInfos(pos.fileName, pos.lineNumber, x), pos);
 		}));
 		#end
-
-		for (k => v in funkin.data.Defines.defines) parser.preprocesorValues.set(k, v);
-
+		
 		set("StringTools", StringTools);
 		set("Date", Date);
 		set("Sys", Sys);
-
+		
 		set("Type", Type);
 		set("script", this);
 		set("Dynamic", Dynamic);
-		set('modFolder', modFolder);
-
+		
 		set('StringMap', haxe.ds.StringMap);
 		set('IntMap', haxe.ds.IntMap);
 		set('ObjectMap', haxe.ds.ObjectMap);
@@ -266,7 +256,7 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 		set("FunkinSprite", funkin.objects.FunkinSprite);
 		set("FlxTypedGroup", flixel.group.FlxGroup.FlxTypedGroup);
 		set("FlxSpriteGroup", flixel.group.FlxSpriteGroup);
-		set("FlxCamera", flixel.FlxCamera);
+		set("FlxCamera", extensions.flixel.FlxCameraEx);
 		set("FlxMath", flixel.math.FlxMath);
 		set("FlxTimer", flixel.util.FlxTimer);
 		set("FlxTween", flixel.tweens.FlxTween);
@@ -386,10 +376,13 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 			set('seenCutscene', PlayState.seenCutscene);
 			set('week', funkin.data.WeekData.weeksList[PlayState.storyMeta.curWeek]);
 			set('difficultyName', funkin.backend.Difficulty.difficulties[PlayState.storyMeta.difficulty]);
+			set('songLength', FlxG.sound.music.length);
 			set('healthGainMult', PlayState.instance.healthGain);
 			set('healthLossMult', PlayState.instance.healthLoss);
+			set('instakillOnMiss', PlayState.instance.instakillOnMiss);
 			set('botPlay', PlayState.instance.cpuControlled);
 			set('practice', PlayState.instance.practiceMode);
+			set('startedCountdown', false);
 			set('mustHitSection', PlayState.SONG?.notes[0]?.mustHitSection ?? false);
 			
 			set("global", PlayState.instance.variables);

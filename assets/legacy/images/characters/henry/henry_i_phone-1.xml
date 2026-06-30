@@ -106,20 +106,20 @@ Created with FunkyPacker v1.0.0 https://jereidk.github.io/FunkyPacker/
 	<SubTexture name="Henry Idle No charles0011" x="1897" y="2130" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
 	<SubTexture name="Henry Idle No charles0012" x="1897" y="2130" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
 	<SubTexture name="Henry Idle No charles0013" x="1897" y="2130" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles000" x="414" y="683" width="414" height="707" frameX="-0" frameY="-14" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles001" x="414" y="683" width="414" height="707" frameX="-0" frameY="-14" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles002" x="1676" y="697" width="414" height="708" frameX="-1" frameY="-13" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles003" x="1676" y="697" width="414" height="708" frameX="-1" frameY="-13" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles004" x="2488" y="701" width="398" height="712" frameX="-9" frameY="-9" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles005" x="2488" y="701" width="398" height="712" frameX="-9" frameY="-9" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles006" x="1500" y="2130" width="397" height="720" frameX="-9" frameY="-1" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles007" x="1500" y="2130" width="397" height="720" frameX="-9" frameY="-1" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles008" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles009" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles010" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles011" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles012" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
-	<SubTexture name="Henry Idle Charles013" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0000" x="414" y="683" width="414" height="707" frameX="-0" frameY="-14" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0001" x="414" y="683" width="414" height="707" frameX="-0" frameY="-14" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0002" x="1676" y="697" width="414" height="708" frameX="-1" frameY="-13" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0003" x="1676" y="697" width="414" height="708" frameX="-1" frameY="-13" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0004" x="2488" y="701" width="398" height="712" frameX="-9" frameY="-9" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0005" x="2488" y="701" width="398" height="712" frameX="-9" frameY="-9" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0006" x="1500" y="2130" width="397" height="720" frameX="-9" frameY="-1" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0007" x="1500" y="2130" width="397" height="720" frameX="-9" frameY="-1" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0008" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0009" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0010" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0011" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0012" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
+	<SubTexture name="Henry Idle0013" x="2294" y="2133" width="397" height="721" frameX="-9" frameY="-0" frameWidth="415" frameHeight="721"/>
 	<SubTexture name="Henry Left0000" x="2237" y="0" width="513" height="701" frameX="-0" frameY="-1" frameWidth="527" frameHeight="702"/>
 	<SubTexture name="Henry Left0001" x="2237" y="0" width="513" height="701" frameX="-0" frameY="-1" frameWidth="527" frameHeight="702"/>
 	<SubTexture name="Henry Left0002" x="999" y="0" width="514" height="692" frameX="-13" frameY="-10" frameWidth="527" frameHeight="702"/>
