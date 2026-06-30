@@ -242,7 +242,10 @@ class FunkinScript extends IrisEx implements IFlxDestroyable
 		set('curDecStep', 0);
 		set('version', Main.NMV_VERSION.trim());
 		set('Defines', funkin.data.Defines);
-		
+		set('modFolder', Mods.currentModDirectory);
+
+		for (k => v in funkin.data.Defines.defines) parser.preprocesorValues.set(k, v);
+
 		// set flixel related stuff
 		set("FlxG", flixel.FlxG);
 		set("FlxSprite", flixel.FlxSprite);
